@@ -17,8 +17,16 @@ alias disablesleep="sudo pmset -a disablesleep 1"
 alias viewsettings="pmset -g"
 
 # Functions
-function pull_reset_merge() {
+function pull_reset_merge_dev() {
     git checkout dev && git reset --hard origin/dev && git merge "$1"
+}
+
+function pull_reset_to() {
+    git checkout "$1" && git reset --hard origin/"$1"
+}
+
+function checkout_pull(){
+    git checkout "$1" && git pull
 }
 
 function push_first_time() {
