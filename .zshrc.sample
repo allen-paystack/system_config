@@ -1,0 +1,10 @@
+# Load env variables from custom definition
+if [ -f '/Path/to/variables.zshrc' ]; then
+            . '/Path/to/variables.zshrc'
+fi
+
+# Load aliases from custom definition
+if [ -f '/Path/to/aliases.zshrc' ]; then
+            . '/Path/to/aliases.zshrc'
+fi
+
