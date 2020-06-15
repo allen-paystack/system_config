@@ -18,8 +18,9 @@ alias viewsettings="pmset -g"
 alias reset_audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 
 # Functions
-function pull_reset_merge_dev() {
-    git checkout dev && git reset --hard origin/dev && git merge "$1"
+function pull_reset_merge_into_dev() {
+    branch=$(git symbolic-ref --short -q HEAD)
+    git checkout dev && git reset --hard origin/dev && git merge $branch
 }
 
 function pull_reset_to() {
