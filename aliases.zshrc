@@ -15,6 +15,7 @@ alias stopmongo="brew services stop mongodb-community@4.2"
 alias allowsleep="sudo pmset -a disablesleep 0"
 alias disablesleep="sudo pmset -a disablesleep 1"
 alias viewsettings="pmset -g"
+alias reset_audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 
 # Functions
 function pull_reset_merge_dev() {
