@@ -17,7 +17,7 @@ alias disablesleep="sudo pmset -a disablesleep 1"
 alias viewsettings="pmset -g"
 alias reset_audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 alias start_kafka="zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties"
-alias commit="git commit"
+alias commit="git commit -S"
 
 # Variable declarations
 last_branch='master'
