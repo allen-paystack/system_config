@@ -18,6 +18,7 @@ alias viewsettings="pmset -g"
 alias reset_audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 alias start_kafka="zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties"
 alias commit="git commit -S"
+alias port_scan="lsof -nP +c 15 | grep LISTEN"
 
 # Variable declarations
 last_branch='master'
@@ -98,3 +99,27 @@ function go_to_last(){
    last_branch=$branch
 }
 
+function file_count() {
+    find . -maxdepth 1 -type f | wc -l
+}
+
+function prune_git_branches() {
+    git checkout master
+    git branch | grep -ve " master$" | xargs git branch -D
+}
+
+function initial_commit_hash(){
+$(git log master.."$branch" --oneline | tail -1 | cut -d ' ' -f1)
+}
+
+function resign() {
+    git rebase --exec 'git commit --amend --no-edit -n -S' -i master
+}
+
+function do_curl() {
+    curl -vvv "$1"
+}
+
+function do_openssl() {
+    openssl s_client -connect "$1"
+}
